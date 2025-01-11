@@ -102,8 +102,6 @@ function selectPokemon(id: number) {
 .search-container {
   position: relative;
   min-width: 320px;
-  max-height: 200px;
-  overflow-y: scroll;
 }
 
 .pokemon-search-list {
