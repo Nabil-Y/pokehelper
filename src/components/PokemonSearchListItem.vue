@@ -1,6 +1,6 @@
 <template>
   <div class="pokemon-sprite-container">
-    <img :src="imageLink" alt="" aria-hidden="true" class="pokemon-sprite" />
+    <img :src="imageLink" alt="" aria-hidden="true" class="pokemon-sprite"/>
     <p>{{ name }}</p>
   </div>
 </template>

@@ -36,15 +36,42 @@
           />
         </div>
       </div>
+      <div class="pokemon-stats">
+        <div>HP: {{ stats.hp }}</div>
+        <div>Attaque: {{ stats.atk }}</div>
+        <div>Défense: {{ stats.def }}</div>
+        <div>Attaque spéciale: {{ stats.spe_atk }}</div>
+        <div>Défense spéciale: {{ stats.spe_def }}</div>
+        <div>Vitesse: {{ stats.vit }}</div>
+      </div>
+      <h3>Capacités</h3>
+      <div v-for="ability in selectedPokemon.talents">
+        <div>{{ ability.name }}</div>
+      </div>
+      <h3>Dégats</h3>
+      <div class="pokemon-resistances">
+        <div>
+          <div v-for="resistance in selectedPokemon.resistances.slice(0,9)">{{ resistance.name }}: x{{
+              resistance.multiplier
+            }}
+          </div>
+        </div>
+        <div>
+          <div v-for="resistance in selectedPokemon.resistances.slice(-9)">{{ resistance.name }}: x{{
+              resistance.multiplier
+            }}
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 </template>
 
 <script setup lang="ts">
 import pokemonData from "@/data/pokemon_min.json";
-import { computed, ref } from "vue";
+import {computed, ref} from "vue";
 import PokemonSearchListItem from "./components/PokemonSearchListItem.vue";
-import type { PokemonData } from "./data/type";
+import type {PokemonData} from "./data/type";
 
 const userInput = ref("");
 const selectedPokemonIndex = ref(0);
@@ -72,6 +99,14 @@ function selectPokemon(id: number) {
   selectedPokemonIndex.value = id;
   userInput.value = "";
 }
+
+const stats = computed(() => {
+  return selectedPokemon.value.stats;
+});
+
+const resistances = computed(() => {
+  return selectedPokemon.value.resistances
+});
 </script>
 
 <style lang="scss" scoped>
@@ -106,5 +141,10 @@ function selectPokemon(id: number) {
 
 .pokemon-search-list {
   position: absolute;
+}
+
+.pokemon-resistances {
+  display: flex;
+  gap: 12px;
 }
 </style>
