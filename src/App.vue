@@ -113,7 +113,7 @@
 </template>
 
 <script setup lang="ts">
-import pokemonData from "@/data/pokemon.json";
+import pokemonData from "@/data/pokemon_min.json";
 import {computed, ref} from "vue";
 import type {PokemonData} from "./data/type";
 
