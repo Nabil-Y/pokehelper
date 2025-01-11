@@ -88,9 +88,11 @@
               :key="resistance.name + index"
             >
               {{ resistance.name }}:
-              <span class="bold" :class="[getResistanceColor(resistance.multiplier)]">x{{
-                  resistance.multiplier
-                }}</span>
+              <span
+                class="bold"
+                :class="[getResistanceColor(resistance.multiplier)]"
+                >x{{ resistance.multiplier }}</span
+              >
             </div>
           </div>
           <div>
@@ -101,9 +103,12 @@
               :key="resistance.name + index"
             >
               {{ resistance.name }}:
-              <span class="bold" :class="[getResistanceColor(resistance.multiplier)]"> x{{
-                  resistance.multiplier
-                }} </span>
+              <span
+                class="bold"
+                :class="[getResistanceColor(resistance.multiplier)]"
+              >
+                x{{ resistance.multiplier }}
+              </span>
             </div>
           </div>
         </div>
@@ -114,8 +119,8 @@
 
 <script setup lang="ts">
 import pokemonData from "@/data/pokemon_min.json";
-import {computed, ref} from "vue";
-import type {PokemonData} from "./data/type";
+import { computed, ref } from "vue";
+import type { PokemonData } from "./data/type";
 
 const userInput = ref("");
 const selectedPokemonIndex = ref(0);
@@ -128,15 +133,8 @@ const pokemonIdNameList = pokemonData.map((pokemon) => ({
   name: pokemon.name.fr,
   image: pokemon.sprites.regular,
 }));
-console.log("bababoi")
-console.log(pokemonData)
-console.log((pokemonData as PokemonData[]).filter(pkmn => pkmn.resistances && pkmn.resistances[2].multiplier === 0).map(pkmn => ({
-  name: pkmn.name.fr,
-  types: `${pkmn.types[0].name}  ${pkmn.types[1] ? "/ " + pkmn.types[1].name : ""}`,
-})))
 
 const filteredPokemonIdNameList = computed(() => {
-
   return pokemonIdNameList
     .filter((pokemonIdName) =>
       pokemonIdName.name
@@ -169,7 +167,6 @@ function getResistanceColor(mutliplier: number): string {
       return "";
   }
 }
-
 </script>
 
 <style lang="scss" scoped>
