@@ -18,7 +18,7 @@
     </div>
 
     <div v-if="selectedPokemonIndex">
-          <img
+      <img
         :src="selectedPokemon.sprites.regular"
         alt=""
         aria-hidden="true"
