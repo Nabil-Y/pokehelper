@@ -4,7 +4,9 @@
       <input
         type="text"
         :value="userInput"
-        @input="(event) => (userInput = event.target.value)"
+        @input="
+          (event) => (userInput = (event.target as HTMLInputElement).value)
+        "
         placeholder="Selectionnez un pokemon"
       />
       <div v-if="userInput" class="pokemon-search-list">
