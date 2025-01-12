@@ -3,7 +3,8 @@
     <div class="search-container">
       <input
         type="text"
-        v-model="userInput"
+        :value="userInput"
+        @input="(event) => (userInput = event.target.value)"
         placeholder="Selectionnez un pokemon"
       />
       <div v-if="userInput" class="pokemon-search-list">
